@@ -38,7 +38,9 @@ Please install 'apache-airflow[mysql]'
 
 mysql-connector-python is proved not working with Airflow
 
-- BashOperator: TemplateNotFoundthe command needs to follow with a space:
+- BashOperator: TemplateNotFound
+
+the command needs to follow with a space:
 
 {% highlight python %}
 bash_command='{}/backup.sh '.format(backup_dir),

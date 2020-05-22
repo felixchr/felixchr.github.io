@@ -1,59 +1,73 @@
-# Site settings
-title: Felix the Tech Cat
-url: "https://felixchr.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-baseurl: ""
-#timezone: Asia/Chongqing
-description: >
-  Felix's tech note site.
+# Outputting
+permalink: /:categories/:year/:month/:day/:title.html
 
-# Your information
-email: felix.chr@gmail.com
-author: Felix Cao
-avatar: "/images/avatar.jpg"
-profile: System engineer based in SF Bay Area. Passionate about automation!
-#twitter_username: twitter_username
-#github_username:  github_username
-profile_links:
-  Email: "mailto:felix.chr@gmail.com"
-  GitHub: "https://github.com/felixchr"
-  # You can add more profile links above, or edit _includes/sidebar.html 
-
-# Comment Service (Disqus or 多说)
-#  choose one and un-comment the line to active it
-#disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
-#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
-
+# Conversion
+markdown:         kramdown
+highlighter:      rouge
 excerpt_separator: <!--more-->
 
-header:
-  links:             # Links on the header. Link to in-site page with a slash as prefix
-    About: /about/
-    Category: /category/
-    # Donate: https://laobubu.net/donate.html
+# Config for your profile.
+title:            Friday Theme            # Site title
+name:             Friday Theme            # Your name
+avatar:           /theme/img/avatar.jpg   # Path to an avatar image
 
-permalink: /archivers/:title
-plugins:
- - jekyll-paginate
- - jekyll-gist
- - jemoji
+# The theme uses the baseurl throughout, which is useful for running the entire
+# site under a subdir, like for this GitHub Pages deployment as a project site.
+baseurl: "/friday-theme"
 
-# Build settings
-paginate: 5
-paginate_path: "page:num"
+# Add a directory to hold misc pages, just to keep the root directory clean.
+include: ["_pages", "_portfolio"]
 
-highlighter: rouge
-markdown: kramdown
+# Wire in the SASS files in the theme directory.
+sass:
+  sass_dir: theme/_sass
+  style: compressed
 
-# https://jekyllrb.com/docs/configuration/#precedence
+# Turn the projects into a collection.
+collections:
+  projects:
+    output: true
+    title: Projects
+    permalink: /:collection/:name.html
+  portfolio:
+    output: true
+    title: portfolio
+    permalink: /:collection/:name.html
+
 defaults:
+# Turn the profile sidebar on for all pages by default, except for the
+# collections, where it is off and replaced by useful things on the sidebar.
+# To override this one a page, use
+#    show_profile: false
+# to hide the profile.
   -
     scope:
       path: ""
-      type: "posts"
     values:
-      layout: "post"
+      show_profile: true
+  -
+    scope:
+      path: "_posts"
+    values:
+      show_profile: false
+      layout: defaults/post
+  -
+    scope:
+      path: "_portfolio"
+    values:
+      show_profile: false
+      layout: defaults/portfolio
+  -
+    scope:
+      path: "_projects"
+    values:
+      show_profile: false
+      layout: defaults/project
+  -
+    scope:
+      path: "list"
+    values:
+      show_profile: false
+      layout: defaults/list
 
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  math_engine: mathjax
+

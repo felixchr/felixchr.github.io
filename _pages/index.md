@@ -2,6 +2,7 @@
 layout: defaults/page
 permalink: index.html
 narrow: true
+show_tags: true
 title: Welcome to Felix's tech notes!
 ---
 

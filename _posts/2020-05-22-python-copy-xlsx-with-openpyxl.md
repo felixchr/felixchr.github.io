@@ -1,7 +1,7 @@
 ---
 title: Copy Excel xlsx with openpyxl and print it in Python
 categories: [tips, operations, automation]
-tags: [operations, automation, tips]
+tags: [operations, automation, tips, python, openpyxl]
 description: Use openpyxl to copy a xlsx and print to printer
 ---
 
